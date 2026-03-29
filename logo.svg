@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Transparent background (no fill rect) -->
+
+  <!-- Outer circle ring -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#4F8EF7" stroke-width="18"/>
+
+  <!-- Stylized "R" letterform -->
+  <path
+    d="M160 130 L160 382
+       M160 130 L270 130
+       Q340 130 340 200
+       Q340 255 280 268
+       L340 382
+       M160 255 L275 255
+       Q310 255 310 200
+       Q310 152 270 152
+       L160 152"
+    fill="none"
+    stroke="#4F8EF7"
+    stroke-width="34"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Wave accent below the R, representing "rive" (river/shore) -->
+  <path
+    d="M130 400
+       Q165 375 200 400
+       Q235 425 270 400
+       Q305 375 340 400
+       Q358 413 380 400"
+    fill="none"
+    stroke="#7EC8F7"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+</svg>
