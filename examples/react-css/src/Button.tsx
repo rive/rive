@@ -7,5 +7,5 @@ export interface ButtonProps {
 }
 
 export function Button({ brand = 'secondary', children }: ButtonProps) {
-  return <button className={'button button-' + brand}>{children}</button>;
+  return <button className={`button button-${brand}`}>{children}</button>;
 }

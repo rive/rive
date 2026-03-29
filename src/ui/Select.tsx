@@ -2,11 +2,10 @@ import cn from 'classnames';
 import { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
 import './Select.css';
 
-export interface SelectProps
-  extends Omit<
-    DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>,
-    'size'
-  > {
+export interface SelectProps extends Omit<
+  DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>,
+  'size'
+> {
   options: Array<{ value: string; label: string }>;
   size?: 'medium' | 'small';
 }

@@ -26,8 +26,8 @@ export function Nav({ docs, languages, author, theme, setTheme }: NavProps) {
     .map((doc) => ({
       title: doc.title,
       path: getRoutePath(doc.filepath),
-      group: doc.frontmatter?.['group'],
-      order: doc.frontmatter?.['order'],
+      group: doc.frontmatter?.group,
+      order: doc.frontmatter?.order,
     }))
     .sort((a, b) => {
       if (typeof a.order === 'number' && typeof b.order === 'number') {

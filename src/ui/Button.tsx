@@ -2,8 +2,10 @@ import classNames from 'classnames';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import './Button.css';
 
-export interface ButtonProps
-  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+export interface ButtonProps extends DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> {
   active?: boolean;
   color?: 'default' | 'success';
   size?: 'medium' | 'small';
