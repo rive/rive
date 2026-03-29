@@ -2,7 +2,7 @@ import mdx from '@mdx-js/rollup';
 import preact from '@preact/preset-vite';
 import rehypeExtractToc from '@stefanprobst/rehype-extract-toc';
 import rehypeMdxExtractToc from '@stefanprobst/rehype-extract-toc/mdx';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import { join } from 'node:path';
 import recmaExportFilepath from 'recma-export-filepath';
 import recmaMdxDisplayname from 'recma-mdx-displayname';
@@ -15,7 +15,6 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { Config } from '../types/Config.js';
 import { docVitePlugin } from './docVitePlugin.js';
 
@@ -69,9 +68,6 @@ export default async function getDocConfig(config: Config, type: 'server' | 'bui
       // Support React/Preact
       config.template === 'preact' ? preact() : react({ tsDecorators: true }),
 
-      // Support tsconfig's compilerOptions.paths
-      tsconfigPaths(),
-
       // Provide virtual index.html entry
       docVitePlugin(config),
     ],
@@ -80,6 +76,7 @@ export default async function getDocConfig(config: Config, type: 'server' | 'bui
         [config.packageJson.name]: join(process.cwd(), 'src'),
         '@mdx-js/react': config.template === 'preact' ? '@mdx-js/preact' : '@mdx-js/react',
       },
+      tsconfigPaths: true,
     },
     server: {
       host: true,

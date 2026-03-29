@@ -76,7 +76,7 @@
     "@mdx-js/rollup": "^3.1.1",
     "@preact/preset-vite": "^2.10.5",
     "@stefanprobst/rehype-extract-toc": "^3.0.0",
-    "@vitejs/plugin-react-swc": "^4.3.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "@vitest/ui": "^4.1.2",
     "chalk": "^5.6.2",
     "chokidar": "^5.0.0",
@@ -115,7 +115,6 @@
     "typescript": "^6.0.2",
     "vite": "^8.0.3",
     "vite-plugin-commonjs": "^0.10.4",
-    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.2",
     "wouter": "^3.9.0"
   },
