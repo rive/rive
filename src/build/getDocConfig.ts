@@ -66,7 +66,7 @@ export default async function getDocConfig(config: Config, type: 'server' | 'bui
       },
 
       // Support React/Preact
-      config.template === 'preact' ? preact() : react({ tsDecorators: true }),
+      config.template === 'preact' ? preact() : react(),
 
       // Provide virtual index.html entry
       docVitePlugin(config),
