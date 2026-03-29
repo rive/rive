@@ -31,7 +31,7 @@
       "dist"
     ],
     "extends": [
-      "stylelint-config-rive"
+      "stylelint-config-ali"
     ]
   },
   "devDependencies": {

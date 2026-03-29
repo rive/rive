@@ -46,6 +46,9 @@ export async function buildLib(config: Config) {
   // find assets files
   const assets = await glob('src/**/*.{css,less,scss,json}');
 
+  // find declaration files
+  const dts = await glob('*.d.ts');
+
   // empty old output
   await rm(outDir, { recursive: true, force: true });
 
@@ -59,7 +62,7 @@ export async function buildLib(config: Config) {
       rootDir: 'src',
       outDir,
     };
-    const program = ts.createProgram(sources, compilerOptions);
+    const program = ts.createProgram([...sources, ...dts], compilerOptions);
     const emitResult = program.emit();
 
     const allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
