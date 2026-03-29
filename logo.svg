@@ -1,37 +1,129 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <!-- Transparent background (no fill rect) -->
+  <defs>
+    <!-- Main gradient: deep blue → vibrant cyan, bottom-left to top-right -->
+    <linearGradient id="rg" x1="60" y1="460" x2="460" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#1228D4"/>
+      <stop offset="45%"  stop-color="#0070DC"/>
+      <stop offset="100%" stop-color="#00CCEE"/>
+    </linearGradient>
+    <!-- Darker gradient for depth shadow layer -->
+    <linearGradient id="rgs" x1="60" y1="460" x2="460" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#09168A"/>
+      <stop offset="45%"  stop-color="#00449E"/>
+      <stop offset="100%" stop-color="#0098BE"/>
+    </linearGradient>
+    <!-- Stripe mask: diagonal bands (45°) to create the ribbon depth effect -->
+    <pattern id="sp" patternUnits="userSpaceOnUse" width="82" height="82"
+             patternTransform="rotate(-45 256 256)">
+      <rect x="0" y="0"  width="82" height="28" fill="white"/>
+      <rect x="0" y="36" width="82" height="28" fill="white"/>
+      <rect x="0" y="72" width="82" height="10" fill="white"/>
+    </pattern>
+    <mask id="sm">
+      <rect width="512" height="512" fill="url(#sp)"/>
+    </mask>
+  </defs>
 
-  <!-- Outer circle ring -->
-  <circle cx="256" cy="256" r="230" fill="none" stroke="#4F8EF7" stroke-width="18"/>
+  <!--
+    R letterform composed of:
+      • Outer R contour + bowl counter (even-odd fill → transparent counter)
+      • Bottom scroll appended to the stem for a calligraphic feel
+    The shadow layer is painted first (darker gradient, shifted), then the
+    main layer is painted on top with the stripe mask applied so the ribbon
+    bands let the shadow show through, creating 3-D ribbon depth.
+  -->
 
-  <!-- Stylized "R" letterform -->
-  <path
-    d="M160 130 L160 382
-       M160 130 L270 130
-       Q340 130 340 200
-       Q340 255 280 268
-       L340 382
-       M160 255 L275 255
-       Q310 255 310 200
-       Q310 152 270 152
-       L160 152"
-    fill="none"
-    stroke="#4F8EF7"
-    stroke-width="34"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+  <!-- ── Shadow layer (deeper colour, offset down-right) ── -->
+  <g transform="translate(7,11)" opacity="0.45">
+    <path fill="url(#rgs)" fill-rule="evenodd" d="
+      M 82 432
+      C 78 456 54 468 35 452
+      C 16 435 22 407 45 394
+      C 64 382 82 394 82 418
+      L 82 76
+      C 82 66 92 60 105 60
+      L 292 60
+      C 422 60 458 160 416 238
+      C 400 272 370 298 338 307
+      C 356 320 384 355 410 393
+      L 430 430
+      C 434 444 420 454 408 446
+      L 296 326
+      C 273 308 257 298 236 296
+      L 152 296
+      L 152 432
+      Z
+      M 152 106
+      L 274 106
+      C 348 106 376 154 360 206
+      C 347 247 316 266 274 266
+      L 152 266
+      Z
+    "/>
+  </g>
 
-  <!-- Wave accent below the R, representing "rive" (river/shore) -->
-  <path
-    d="M130 400
-       Q165 375 200 400
-       Q235 425 270 400
-       Q305 375 340 400
-       Q358 413 380 400"
-    fill="none"
-    stroke="#7EC8F7"
-    stroke-width="16"
-    stroke-linecap="round"
-  />
+  <!-- ── Solid base layer (no mask → forms the dark ribbon gaps visible through mask) ── -->
+  <path fill="url(#rg)" fill-rule="evenodd" d="
+    M 82 432
+    C 78 456 54 468 35 452
+    C 16 435 22 407 45 394
+    C 64 382 82 394 82 418
+    L 82 76
+    C 82 66 92 60 105 60
+    L 292 60
+    C 422 60 458 160 416 238
+    C 400 272 370 298 338 307
+    C 356 320 384 355 410 393
+    L 430 430
+    C 434 444 420 454 408 446
+    L 296 326
+    C 273 308 257 298 236 296
+    L 152 296
+    L 152 432
+    Z
+    M 152 106
+    L 274 106
+    C 348 106 376 154 360 206
+    C 347 247 316 266 274 266
+    L 152 266
+    Z
+  "/>
+
+  <!-- ── Highlighted ribbon layer (same path with stripe mask → lighter bands on top) ── -->
+  <path fill="url(#rg)" fill-rule="evenodd" mask="url(#sm)" opacity="0.72" d="
+    M 82 432
+    C 78 456 54 468 35 452
+    C 16 435 22 407 45 394
+    C 64 382 82 394 82 418
+    L 82 76
+    C 82 66 92 60 105 60
+    L 292 60
+    C 422 60 458 160 416 238
+    C 400 272 370 298 338 307
+    C 356 320 384 355 410 393
+    L 430 430
+    C 434 444 420 454 408 446
+    L 296 326
+    C 273 308 257 298 236 296
+    L 152 296
+    L 152 432
+    Z
+    M 152 106
+    L 274 106
+    C 348 106 376 154 360 206
+    C 347 247 316 266 274 266
+    L 152 266
+    Z
+  "/>
+
+  <!-- ── Highlight sheen: thin lighter stroke tracing the R spine for polish ── -->
+  <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="6"
+        stroke-linecap="round" stroke-linejoin="round"
+        d="M 82 410
+           C 64 382 82 394 82 418
+           L 82 88
+           C 82 68 100 62 115 62
+           L 292 62
+           C 422 62 458 162 416 240
+           C 400 274 370 300 338 309"/>
 </svg>
