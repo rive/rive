@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.4.0 - 2026-03-29
+
+- Vite
+  - Updated `vite` from 7.x to 8.x
+  - Changed `@vitejs/plugin-react-swc` to `@vitejs/plugin-react`
+  - Removed `vite-tsconfig-paths` plugin, using Vite's built-in `resolve.tsconfigPaths` instead
+- TypeScript
+  - Updated `typescript` from 5.x to 6.x
+  - Added CSS module type declarations in `globals.d.ts`
+- UI
+  - Updated `i18next` from 25.x to 26.x
+  - Updated `react-i18next` from 15.x to 17.x
+
 ## 3.3.0 - 2025-08-31
 
 - Added table of contents

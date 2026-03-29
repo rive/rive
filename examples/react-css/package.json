@@ -33,7 +33,7 @@
   ],
   "stylelint": {
     "extends": [
-      "stylelint-config-rive"
+      "stylelint-config-ali"
     ],
     "ignoreFiles": [
       "node_modules",
